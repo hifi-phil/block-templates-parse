@@ -23,9 +23,8 @@ function buildData(templatesDir) {
 		var data = build.resolveDataString(file.contents.toString(), file.path, externals, errors);
 
 		if(errors.length > 0) {
-			var that = this;
-			errors.forEach(function(error) {
-				that.emit('error', new pluginError(error.source, error.inner));
+			errors.forEach((error) => {
+				this.emit('error', new pluginError(error.source, error.inner));
 			});
 			return cb();	
 		}
